@@ -14,6 +14,7 @@ db_connection = mysql.connector.connect(
 
 # (2) mysql 연결 
 cursor = db_connection.cursor()
+
 # faker = Faker()
 
 from selenium import webdriver
@@ -62,12 +63,25 @@ for i in items:
     product_info = i.select_one(".product_info_product_name").text
     money = int(i.select_one(".amount").text.strip().replace(',',"").replace('원',""))
 
-    review = int(i.select_one(".review_figure").text)
-    wish = int(i.select_one(".wish_figure").text.replace(',',"").replace('.',"").replace('만',""))
+    wish = i.select_one(".wish_figure").text.replace(',',"").replace('.',"").replace('만',"")
+
+    review = i.select_one(".review_figure").text
+    if review == "":
+        review = 0
+    else:
+        review = int(review)
+  
+    if wish == "":
+        wish = 0 
+    else:
+        wish == int(wish)
 
     values = (product_name,product_info,money,review,wish)
                 # ->  집어넣을 데이터 
-    cursor. execute(sql, values)
+    cursor.execute(sql, values)
+    db_connection.commit()
+    # 위에 sql 문 반영 -> db에  보낸 데이터를 반영하겠다. ( 이부분 필수 )
+
 
 
 
