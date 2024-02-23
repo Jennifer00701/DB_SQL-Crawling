@@ -54,7 +54,7 @@ for i in range(20) :
 html = driver.page_source
 soup = BeautifulSoup(html, "html.parser")
 
-items = soup.select(".product_card") 
+items = soup.select(".product_card")  
 
 sql = 'insert into crawling(product_name,product_info,money,review,wish) values(%s, %s, %s, %s, %s)'
                     # -> 크롤링 : 테이블명
