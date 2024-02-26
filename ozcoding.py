@@ -14,17 +14,30 @@ options.add_experimental_option("detach", True)
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 driver = webdriver.Chrome(options=options)
 
-url = "https://ozcodingschool.com/"
+url = "https://ozcodingschool.com/ozcoding/startupcamp"
 driver.get(url)
 
 
+driver.find_element(By.CSS_SELECTOR, ".btn_tit").click()
+
+html = driver.page_source
+soup = BeautifulSoup(html, "html.parser")
+
+# items = soup.select(".category_promotion")
+
+# num = 1
+# for i in items:
+#     product_name = i.select_one(".")
+
+
+'''
 x_button = driver.find_element(By.XPATH, "/html/body/div[1]/div/div[1]/div/div")
 print(x_button)
 
 time.sleep(1)
 if x_button:
   x_button.click()
-
+'''
 
 # html = driver.page_source
 # soup = BeautifulSoup(html, "html.parser")
