@@ -64,7 +64,10 @@ for i in items:
     money = int(i.select_one(".amount").text.strip().replace(',',"").replace('원',""))
 
     wish = i.select_one(".wish_figure").text.replace(',',"").replace('.',"").replace('만',"")
+    #크롤링 시 , 나올 때 없애주기 코드 replace(',',"") , .replace('원',"")) 
+    
 
+    # int 값 없으면 0으로 표시 
     review = i.select_one(".review_figure").text
     if review == "":
         review = 0
@@ -75,6 +78,8 @@ for i in items:
         wish = 0 
     else:
         wish == int(wish)
+
+
 
     values = (product_name,product_info,money,review,wish)
                 # ->  집어넣을 데이터 
