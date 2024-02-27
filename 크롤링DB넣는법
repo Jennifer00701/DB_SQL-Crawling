@@ -7,6 +7,28 @@ num, .text, print, f.{} 모두 삭제하되, DB에 저장되어야 하는 부분
 CREATE TABLE 생성할명
 # 되도록 명시적인 것 ! user 등
 
+--------------[기본 세팅]--------------------
+
+import pymysql
+import mysql.connector
+from bs4 import  BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+# (1) mysql 연결 설정
+db_connection = mysql.connector.connect(
+    host = 'localhost', # 내 컴퓨터
+    user = 'root', # 계정 
+    password = '485029', # 비밀번호 
+    database = 'DB_all' # 연결할 DB명
+)
+
+# (2) mysql 연결 
+cursor = db_connection.cursor()
+
+--------------[workbench DB table 생성]--------------------
+
 id INT NOT NULL AUTO_INCREMENT
 # id 값 = 데이터의 고유한 번호 
 # id 는 가장 첫 번째 작성하는게 좋음 
@@ -30,6 +52,24 @@ str은 VARCHAR(255) 로 넣어줌
 값이 없는 것들은 NULL값 지정
 해당 값이 없을 수도 있다.
 
+    values = (Q1, A1)
+            # ->  집어넣을 데이터 변수 명
+    cursor.execute(sql,values)
+    db_connection.commit()
+        # 위에 sql 문 반영 -> db에  보낸 데이터를 반영하겠다. ( 이부분 필수 )
 
------
+        # 노란 줄 뜰 경우 위에 선언 안 된 것 !! ( import, 선언 둘 다 확인 )
 
+'''
+create table ozcodig (
+	id INT NOT NULL AUTO_INCREMENT,
+	Question varchar(255) not null,
+    Answer varchar(255) not null,
+    
+    primary key(id)
+);
+
+# 생성 시 select * from ~ 부분은 주석 후 진행해줘야함
+'''
+
+------------------------------------

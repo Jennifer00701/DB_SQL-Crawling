@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options as opt
 from selenium. webdriver.common.by import By
 from selenium. webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
+# bs4라는 라이브러리에서 BeautifulSoup라는 클래스를 가져와 사용하겠다
 import time
 
 # as -> options 를 opt 로 부르겠다 라는 뜻 

@@ -54,6 +54,8 @@ for i in items:
     print(f"가수 이름 : {name.text.strip()}")
     print()
 
+# strip 공백 제거 
+    
     num += 1
 
 driver.find_element(By.LINK_TEXT, "홈").click()

@@ -82,7 +82,7 @@ for i in items:
 
 
     values = (product_name,product_info,money,review,wish)
-                # ->  집어넣을 데이터 
+                   # ->  집어넣을 데이터 변수 명
     cursor.execute(sql, values)
     db_connection.commit()
     # 위에 sql 문 반영 -> db에  보낸 데이터를 반영하겠다. ( 이부분 필수 )
