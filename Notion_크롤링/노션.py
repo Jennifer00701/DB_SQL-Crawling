@@ -18,6 +18,8 @@ for i in items:
 
     print(f"{A1}")                                        
 
-
+# li:nth-of-type(2) -> li 태그 2번째 가져오겠다. 
+# div --- : nth-of-type(n) { 스타일 지정 }
+    
 time.sleep(2)
 driver.close()
