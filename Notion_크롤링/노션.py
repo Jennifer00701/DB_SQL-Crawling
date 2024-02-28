@@ -11,13 +11,13 @@ driver.get(url)
 html = driver.page_source
 soup = BeautifulSoup(html, "html.parser")
 
-items = soup.select('.notion-table-content')
+items = soup.find_all('div', class_ = 'notion-table-row')
 
 for i in items: 
-    A1 = i.select_one('.notion-table-cell-text').text
+    A1 = i.select_one('.notion-table-cell').text
 
-    print(A1)
+    print(f"{A1}")                                        
 
 
-time.sleep(1)
+time.sleep(2)
 driver.close()
